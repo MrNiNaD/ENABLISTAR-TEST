@@ -8,3 +8,119 @@
 ul {
   list-style-type: none;
 }
+
+:root {
+  --color1: rgb(0 36 127);
+  --color2: rgb(132 186 240);
+  --color3: rgb(251 26 31);
+}
+
+.section-1 {
+  background: rgb(226 238 251);
+}
+
+.section-1 ul {
+  display: flex;
+  font-size: 12px;
+  color: var(--color1);
+  justify-content: flex-end;
+  gap: 5px;
+  padding: 8px 10px;
+}
+
+.section-2 {
+  background: var(--color2);
+  display: flex;
+}
+
+.section-2 h1 {
+  padding: 7px;
+  padding-right: 20px;
+}
+
+.net-banking {
+  display: block;
+  font-size: 18px;
+  text-align: right;
+  margin-bottom: 2px;
+}
+
+.net {
+  color: var(--color3);
+}
+
+.banking {
+  color: var(--color1);
+}
+
+.right-section {
+  padding-top: 10px;
+  color: var(--color1);
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+.right-section-part-1 {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color1);
+}
+
+.right-section-part-1 .left {
+  font-size: 13px;
+}
+
+.right-section-part-1 .left span {
+  display: block;
+}
+
+.right-section-part-1 .left .welcome-text {
+  font-weight: 600;
+}
+
+.right-section-part-1 .left .login-text, .right-section-part-1 .right ul {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.right-section-part-1 .right ul {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.right-section-part-1 .right ul button {
+  background: var(--color1);
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 4px;
+}
+
+.right-section-part-2{
+  max-width: 883px;
+  margin-left: auto;
+ }
+
+.right-section-part-2 ul {
+  margin-top: 15px;
+  display: flex;
+  color: var(--color1);
+  justify-content: space-around;
+}
+
+.right-section-part-2 ul li {
+  padding: 15px 5px;
+  font-weight: 600;
+  font-size: 13px;
+  text-align: center;
+}
+
+.nav-link-active {
+  background-color: var(--color1);
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}

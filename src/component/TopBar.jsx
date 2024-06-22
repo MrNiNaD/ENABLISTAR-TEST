@@ -3,7 +3,7 @@ import HdfcLogo from '../assets/hdfc_logo.gif'
 
 const TopBar = () => {
   const data = ["Smart Buy", "Personalize User ID", "Insta Alert", "SMS Banking Registation", "Contact Us"];
-  const navLinks = ["Accounts", "Fund Transfer", "BillPay & Recharge", "Cards", "Demat", "Mutual Funds", "Insurance", "Loans", "Offer"];
+  const navLinks = ["Accounts", "Funds Transfer", "BillPay & Recharge", "Cards", "Demat", "Mutual Funds", "Insurance", "Loans", "Offer"];
 
   return (
     <header>
@@ -46,7 +46,7 @@ const TopBar = () => {
           <div className='right-section-part-2'>
             <ul>
               {navLinks?.map((navLink, index) => {
-                return <li className={navLink === "Fund Transfer" ? "nav-link-active" : ""} key={index}>{navLink}</li>
+                return <li className={navLink === "Funds Transfer" ? "nav-link-active" : ""} key={index}>{navLink}</li>
               })}
             </ul>
           </div>
