@@ -97,7 +97,7 @@ ul {
   align-items: center;
 }
 
-.right-section-part-1 .right ul button {
+.right-section-part-1 .right ul button, .button {
   background: var(--color1);
   color: #fff;
   border: none;
@@ -131,4 +131,45 @@ ul {
   color: #fff;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
+
+h2 {
+  color: var(--color1);
+  text-align: center;
+}
+
+.manage-part-1 {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.manage {
+  padding: 0 10px;
+}
+
+.table-container {
+  margin-top: 25px;
+  overflow-x: auto;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.no-data-div {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+  border-top: none;
 }
