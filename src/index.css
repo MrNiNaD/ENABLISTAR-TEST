@@ -5,6 +5,11 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.wrapper {
+  margin: 0 auto;
+  max-width: 1350px;
+}
+
 ul {
   list-style-type: none;
 }
@@ -30,6 +35,9 @@ ul {
 
 .section-2 {
   background: var(--color2);
+}
+
+.section-2 > div {
   display: flex;
 }
 
