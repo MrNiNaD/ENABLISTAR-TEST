@@ -105,6 +105,7 @@ ul {
   font-weight: 600;
   font-size: 13px;
   border-radius: 4px;
+  text-decoration: none;
 }
 
 .right-section-part-2{
@@ -173,3 +174,56 @@ td, th {
   font-size: 14px;
   border-top: none;
 }
+
+.form-container {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  max-width: 500px;
+  display: block;
+}
+
+.form-container label {
+  font-size: 15px;
+}
+
+.form-container label, .form-container input {
+  display: block;
+  width: 100%;
+}
+
+.btn-container {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.form-container input, .form-container textarea, .form-container select {
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.form-container textarea, .form-container select {
+  max-width: 100%;
+  width: 100%;
+  resize: none;
+}
+
+.form-container select {
+  appearance: none;
+}
+
+.required, .error-msg {
+  color: #f00;
+}
+
+.error-msg {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.each-field-div {
+  margin-top: 10px;
+}
+
+

@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Manage = () => {
   const user = useSelector((state) => state?.user?.data);
@@ -11,7 +12,9 @@ const Manage = () => {
       <div className="manage-part-1">
         <h2>Manage Beneficiaries</h2>
 
-        <button className="button">Add New Beneficiaries</button>
+        <Link to="/add" className="button">
+          Add New Beneficiaries
+        </Link>
       </div>
 
       <div className="table-container">
