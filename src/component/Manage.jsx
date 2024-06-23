@@ -21,21 +21,44 @@ const Manage = () => {
         <table>
           <thead>
             <tr>
+              <th></th>
               <th>Full Name</th>
               <th>Address</th>
               <th>Country</th>
               <th>Pincode</th>
-              <th></th>
+              <th className="links-head"></th>
             </tr>
           </thead>
           {isUser && (
             <tbody>
               <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-                <td>400025</td>
-                <td></td>
+                {user.map((eachUser) => {
+                  return (
+                    <React.Fragment key={eachUser?.id}>
+                      <td>
+                        <input type="radio" checked={true} />
+                      </td>
+                      <td>
+                        <span className="ellipsis">{eachUser?.name}</span>
+                      </td>
+                      <td>
+                        <span className="ellipsis">{eachUser?.address}</span>
+                      </td>
+                      <td>
+                        <span className="ellipsis">{eachUser?.country}</span>
+                      </td>
+                      <td>
+                        <span className="ellipsis">{eachUser?.pincode}</span>
+                      </td>
+                      <td>
+                        <span className="link-container">
+                          <Link className="button">View</Link>
+                          <Link className="button">Edit</Link>
+                        </span>
+                      </td>
+                    </React.Fragment>
+                  );
+                })}
               </tr>
             </tbody>
           )}
