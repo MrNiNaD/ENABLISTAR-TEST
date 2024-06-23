@@ -5,10 +5,13 @@ import { field, fieldTypes, uid } from "../util";
 import FieldSwitch from "./FieldSwitch";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewUser, editUser } from "../redux/slice/user";
+import { useIsView } from "../useIsView";
 
 const Add = () => {
   const user = useSelector((state) => state?.user?.data);
   const param = useParams();
+
+  const isView = useIsView();
 
   const foundData = user.find((eachUser) => eachUser?.id === param?.id);
 
@@ -43,12 +46,12 @@ const Add = () => {
   return (
     <section className="manage wrapper add-beneficiary">
       <div className="manage-part-1">
-        <h2>Add New Beneficiaries</h2>
+        <h2>{isView ? "Detail of Beneficiary" : "Add New Beneficiary"}</h2>
       </div>
 
       <form onSubmit={handleSubmit(afterSubmit)} className="form-container">
         {field.map((eachField) => {
-          if (eachField?.type === fieldTypes.button) {
+          if (eachField?.type === fieldTypes.button && !isView) {
             return (
               <div key={eachField?.id} className="btn-container">
                 <button className="button">{eachField?.text}</button>
@@ -60,7 +63,7 @@ const Add = () => {
             <div key={eachField?.id} className="input-field each-field-div">
               <label htmlFor={eachField?.name}>
                 {eachField?.label}
-                <span className="required">*</span>
+                {!isView && <span className="required">*</span>}
               </label>
               <FieldSwitch register={register} eachField={eachField} />
               {errors?.[eachField?.name] && (

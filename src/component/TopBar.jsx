@@ -1,5 +1,6 @@
 import React from "react";
 import HdfcLogo from "../assets/hdfc_logo.gif";
+import { Link } from "react-router-dom";
 
 const TopBar = () => {
   const data = [
@@ -34,11 +35,13 @@ const TopBar = () => {
       <div className="section-2">
         <div className="wrapper">
           <h1>
-            <span className="net-banking">
-              <span className="net">Net</span>
-              <span className="banking">Banking</span>
-            </span>
-            <img src={HdfcLogo} />
+            <Link to="/">
+              <span className="net-banking">
+                <span className="net">Net</span>
+                <span className="banking">Banking</span>
+              </span>
+              <img src={HdfcLogo} />
+            </Link>
           </h1>
 
           <div className="right-section">

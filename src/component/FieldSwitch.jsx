@@ -1,12 +1,16 @@
 import React from "react";
 import { fieldTypes } from "../util";
+import { useIsView } from "../useIsView";
 
 const FieldSwitch = ({ register, eachField }) => {
+  const isView = useIsView();
+
   if (eachField?.type === fieldTypes.select) {
     return (
       <select
         id={eachField?.name}
         {...register(eachField?.name, { required: true })}
+        disabled={isView}
       >
         {Array.isArray(eachField?.options) &&
           eachField?.options?.map((option) => (
@@ -23,6 +27,7 @@ const FieldSwitch = ({ register, eachField }) => {
       <textarea
         id={eachField?.name}
         {...register(eachField?.name, { required: true })}
+        readOnly={isView}
       ></textarea>
     );
   }
@@ -35,6 +40,7 @@ const FieldSwitch = ({ register, eachField }) => {
         type={eachField?.type === fieldTypes.numberfield ? "number" : "text"}
         {...register(eachField?.name, { required: true })}
         id={eachField?.name}
+        readOnly={isView}
       />
     );
   }

@@ -81,7 +81,9 @@ const Manage = () => {
                     </td>
                     <td>
                       <span className="link-container">
-                        <Link className="button">View</Link>
+                        <Link to={`view/${id}`} className="button">
+                          View
+                        </Link>
                         <Link to={`edit/${id}`} className="button">
                           Edit
                         </Link>
