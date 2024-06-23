@@ -176,8 +176,7 @@ td, th {
 }
 
 .form-container {
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin: 20px auto 30px;
   max-width: 500px;
   display: block;
 }
@@ -226,4 +225,6 @@ td, th {
   margin-top: 10px;
 }
 
-
+.add-beneficiary .manage-part-1 {
+  justify-content: center;
+}

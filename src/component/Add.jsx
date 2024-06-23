@@ -61,7 +61,7 @@ const Add = () => {
   ];
 
   return (
-    <section className="manage wrapper">
+    <section className="manage wrapper add-beneficiary">
       <div className="manage-part-1">
         <h2>Add New Beneficiaries</h2>
       </div>
