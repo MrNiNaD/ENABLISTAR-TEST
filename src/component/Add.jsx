@@ -36,7 +36,7 @@ const Add = () => {
       type: fieldTypes.select,
       name: "typeofacc",
       label: "Type of Account",
-      options: ["Current Account", "Saving Account"],
+      options: ["Saving Account", "Current Account"],
     },
     {
       id: 6,
