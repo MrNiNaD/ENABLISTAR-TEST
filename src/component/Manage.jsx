@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { deleteUser } from "../redux/slice/user";
 
 const Manage = () => {
   const [selectedId, setSelectedId] = useState([]);
   const user = useSelector((state) => state?.user?.data);
+
+  const dispatch = useDispatch();
 
   const isUser = Array.isArray(user) && user.length > 0;
 
@@ -20,7 +23,9 @@ const Manage = () => {
 
   const onDelete = () => {
     if (selectedId?.length > 0) {
-      console.log("Reach");
+      if (confirm("Are you sure that you want to delete this beneficiary?")) {
+        dispatch(deleteUser(selectedId));
+      }
     } else {
       alert("Select the beneficiary to delete.");
     }
@@ -50,43 +55,41 @@ const Manage = () => {
           </thead>
           {isUser && (
             <tbody>
-              <tr>
-                {user.map((eachUser) => {
-                  const id = eachUser?.id;
+              {user.map((eachUser) => {
+                const id = eachUser?.id;
 
-                  return (
-                    <React.Fragment key={id}>
-                      <td>
-                        <input
-                          type="checkbox"
-                          onChange={() => selectId(id)}
-                          checked={selectedId.includes(id)}
-                        />
-                      </td>
-                      <td>
-                        <span className="ellipsis">{eachUser?.name}</span>
-                      </td>
-                      <td>
-                        <span className="ellipsis">{eachUser?.address}</span>
-                      </td>
-                      <td>
-                        <span className="ellipsis">{eachUser?.country}</span>
-                      </td>
-                      <td>
-                        <span className="ellipsis">{eachUser?.pincode}</span>
-                      </td>
-                      <td>
-                        <span className="link-container">
-                          <Link className="button">View</Link>
-                          <Link to={`edit/${id}`} className="button">
-                            Edit
-                          </Link>
-                        </span>
-                      </td>
-                    </React.Fragment>
-                  );
-                })}
-              </tr>
+                return (
+                  <tr key={id}>
+                    <td>
+                      <input
+                        type="checkbox"
+                        onChange={() => selectId(id)}
+                        checked={selectedId.includes(id)}
+                      />
+                    </td>
+                    <td>
+                      <span className="ellipsis">{eachUser?.name}</span>
+                    </td>
+                    <td>
+                      <span className="ellipsis">{eachUser?.address}</span>
+                    </td>
+                    <td>
+                      <span className="ellipsis">{eachUser?.country}</span>
+                    </td>
+                    <td>
+                      <span className="ellipsis">{eachUser?.pincode}</span>
+                    </td>
+                    <td>
+                      <span className="link-container">
+                        <Link className="button">View</Link>
+                        <Link to={`edit/${id}`} className="button">
+                          Edit
+                        </Link>
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           )}
         </table>

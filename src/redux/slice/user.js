@@ -34,10 +34,15 @@ export const counterSlice = createSlice({
 
         return eachData;
       });
+    },
+    deleteUser: (state, action) => {
+      const payload = action?.payload;
+      
+      state.data = state.data.filter((eachData) => !payload.includes(eachData?.id));
     }
   },
 })
 
-export const { updateUserState, addNewUser, editUser } = counterSlice.actions
+export const { updateUserState, addNewUser, editUser, deleteUser } = counterSlice.actions
 
 export default counterSlice.reducer
