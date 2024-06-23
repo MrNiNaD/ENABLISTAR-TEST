@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Manage = () => {
+  const [selectedId, setSelectedId] = useState([]);
   const user = useSelector((state) => state?.user?.data);
 
   const isUser = Array.isArray(user) && user.length > 0;
+
+  const selectId = (id) => {
+    setSelectedId((prevstate) => {
+      if (prevstate.includes(id)) {
+        return prevstate.filter((eachValue) => eachValue !== id);
+      } else {
+        return [...prevstate, id];
+      }
+    });
+  };
+
+  const onDelete = () => {
+    if (selectedId?.length > 0) {
+      console.log("Reach");
+    } else {
+      alert("Select the beneficiary to delete.");
+    }
+  };
 
   return (
     <section className="manage wrapper">
@@ -33,10 +52,16 @@ const Manage = () => {
             <tbody>
               <tr>
                 {user.map((eachUser) => {
+                  const id = eachUser?.id;
+
                   return (
-                    <React.Fragment key={eachUser?.id}>
+                    <React.Fragment key={id}>
                       <td>
-                        <input type="radio" checked={true} />
+                        <input
+                          type="checkbox"
+                          onChange={() => selectId(id)}
+                          checked={selectedId.includes(id)}
+                        />
                       </td>
                       <td>
                         <span className="ellipsis">{eachUser?.name}</span>
@@ -53,7 +78,9 @@ const Manage = () => {
                       <td>
                         <span className="link-container">
                           <Link className="button">View</Link>
-                          <Link className="button">Edit</Link>
+                          <Link to={`edit/${id}`} className="button">
+                            Edit
+                          </Link>
                         </span>
                       </td>
                     </React.Fragment>
@@ -69,6 +96,12 @@ const Manage = () => {
             one.
           </div>
         )}
+      </div>
+
+      <div className="delete-container">
+        <button onClick={onDelete} className="button danger">
+          Delete
+        </button>
       </div>
     </section>
   );

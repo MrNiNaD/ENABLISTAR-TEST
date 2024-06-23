@@ -147,6 +147,7 @@ h2 {
 
 .manage {
   padding: 0 10px;
+  margin-bottom: 20px;
 }
 
 .table-container {
@@ -243,4 +244,13 @@ td, th {
 .ellipsis {
   display: block;
   word-break: break-all;
+}
+
+.delete-container {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.danger {
+  background: #f00;
 }

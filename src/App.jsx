@@ -7,6 +7,7 @@ function App() {
   const config = [
     { id: 1, path: "/", element: <Manage /> },
     { id: 2, path: "/add", element: <Add /> },
+    { id: 2, path: "/edit/:id", element: <Add /> },
   ];
 
   return (

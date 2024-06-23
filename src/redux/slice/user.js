@@ -23,10 +23,21 @@ export const counterSlice = createSlice({
         ...state?.data,
         payload
       ];
+    },
+    editUser: (state, action) => {
+      const payload = action?.payload;
+      
+      state.data = state.data.map((eachData) => {
+        if (eachData?.id === payload?.id) {
+          return payload;
+        }
+
+        return eachData;
+      });
     }
   },
 })
 
-export const { updateUserState, addNewUser } = counterSlice.actions
+export const { updateUserState, addNewUser, editUser } = counterSlice.actions
 
 export default counterSlice.reducer

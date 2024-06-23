@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { field, fieldTypes, uid } from "../util";
 import FieldSwitch from "./FieldSwitch";
-import { useDispatch } from "react-redux";
-import { addNewUser } from "../redux/slice/user";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewUser, editUser } from "../redux/slice/user";
 
 const Add = () => {
+  const user = useSelector((state) => state?.user?.data);
   const param = useParams();
+
+  const foundData = user.find((eachUser) => eachUser?.id === param?.id);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
   const navigate = useNavigate();
 
@@ -19,10 +24,22 @@ const Add = () => {
 
   const afterSubmit = (data) => {
     if (confirm("Are you sure you want add new beneficiary?") === true) {
-      dispatch(addNewUser({ ...data, id: uid() }));
+      if (foundData) {
+        dispatch(editUser(data));
+      } else {
+        dispatch(addNewUser({ ...data, id: uid() }));
+      }
+
       navigate("/");
     }
   };
+
+  useEffect(() => {
+    if (foundData) {
+      reset(foundData);
+    }
+  }, []);
+
   return (
     <section className="manage wrapper add-beneficiary">
       <div className="manage-part-1">
