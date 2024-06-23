@@ -110,6 +110,8 @@ ul {
   font-size: 13px;
   border-radius: 4px;
   text-decoration: none;
+  align-self: flex-start;
+  text-align: center;
 }
 
 .right-section-part-2{
@@ -265,5 +267,29 @@ select, select:disabled {
 }
 
 @media only screen and (max-width: 800px) {
+  .section-1, .right-section-part-2, .right-section-part-1 .left span.login-time {
+    display: none;
+  }
 
+  .section-2 > div {
+    flex-direction: column;
+  }
+
+  .section-2 h1 {
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  .right-section-part-1 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right-section-part-1 .right {
+    margin: 10px 0;
+  }
+
+  .manage-title {
+    font-size: 15px;
+  }
 }

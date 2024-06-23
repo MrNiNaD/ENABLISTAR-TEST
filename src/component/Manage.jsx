@@ -34,7 +34,7 @@ const Manage = () => {
   return (
     <section className="manage wrapper">
       <div className="manage-part-1">
-        <h2>Manage Beneficiaries</h2>
+        <h2 className="manage-title">Manage Beneficiaries</h2>
 
         <Link to="/add" className="button">
           Add New Beneficiaries
