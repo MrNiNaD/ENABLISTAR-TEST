@@ -16,9 +16,17 @@ export const counterSlice = createSlice({
         ...(typeof payload === 'object' ? payload : {})
       };
     },
+    addNewUser: (state, action) => {
+      const payload = action?.payload;
+      
+      state.data = [
+        ...state?.data,
+        payload
+      ];
+    }
   },
 })
 
-export const { updateUserState } = counterSlice.actions
+export const { updateUserState, addNewUser } = counterSlice.actions
 
 export default counterSlice.reducer

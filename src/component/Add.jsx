@@ -1,80 +1,35 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
-import { fieldTypes, uid } from "../util";
+import { useNavigate, useParams } from "react-router-dom";
+import { field, fieldTypes, uid } from "../util";
 import FieldSwitch from "./FieldSwitch";
+import { useDispatch } from "react-redux";
+import { addNewUser } from "../redux/slice/user";
 
 const Add = () => {
+  const param = useParams();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const param = useParams();
+  const navigate = useNavigate();
 
-  const field = [
-    {
-      id: 1,
-      type: fieldTypes.inputfield,
-      name: "name",
-      label: "Beneficiary Name",
-    },
-    {
-      id: 3,
-      type: fieldTypes.inputfield,
-      name: "bank",
-      label: "Beneficiary Bank",
-    },
-    {
-      id: 4,
-      type: fieldTypes.numberfield,
-      name: "accno",
-      label: "Account Number",
-    },
-    {
-      id: 5,
-      type: fieldTypes.select,
-      name: "typeofacc",
-      label: "Type of Account",
-      options: ["Saving Account", "Current Account"],
-    },
-    {
-      id: 6,
-      type: fieldTypes.textarea,
-      name: "address",
-      label: "Address",
-    },
-    {
-      id: 7,
-      type: fieldTypes.select,
-      name: "country",
-      label: "Country",
-      options: ["India", "England", "USA", "Australia", "Russia"],
-    },
-    {
-      id: 8,
-      type: fieldTypes.numberfield,
-      name: "pincode",
-      label: "Pincode",
-    },
-    { id: 2, type: fieldTypes.button, text: "Submit" },
-  ];
+  const dispatch = useDispatch();
 
+  const afterSubmit = (data) => {
+    if (confirm("Are you sure you want add new beneficiary?") === true) {
+      dispatch(addNewUser({ ...data, id: uid() }));
+      navigate("/");
+    }
+  };
   return (
     <section className="manage wrapper add-beneficiary">
       <div className="manage-part-1">
         <h2>Add New Beneficiaries</h2>
       </div>
 
-      <form
-        onSubmit={handleSubmit((data) => {
-          if (confirm("Are you sure you want add new beneficiary?") === true) {
-            console.log(data);
-            console.log(uid());
-          }
-        })}
-        className="form-container"
-      >
+      <form onSubmit={handleSubmit(afterSubmit)} className="form-container">
         {field.map((eachField) => {
           if (eachField?.type === fieldTypes.button) {
             return (
