@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TopBar from "./component/TopBar";
 import Manage from "./component/Manage";
 import Add from "./component/Add";
+import Poppup from "./component/Poppup";
 
 function App() {
   const config = [
@@ -25,6 +26,7 @@ function App() {
           );
         })}
       </Routes>
+      <Poppup />
     </BrowserRouter>
   );
 }

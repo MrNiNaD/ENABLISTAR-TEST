@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteUser } from "../redux/slice/user";
+import { updateCommonState } from "../redux/slice/common";
 
 const Manage = () => {
   const [selectedId, setSelectedId] = useState([]);
@@ -23,11 +24,26 @@ const Manage = () => {
 
   const onDelete = () => {
     if (selectedId?.length > 0) {
-      if (confirm("Are you sure that you want to delete this beneficiary?")) {
-        dispatch(deleteUser(selectedId));
-      }
+      dispatch(
+        updateCommonState({
+          modalConfig: {
+            display: true,
+            msg: "Are you sure that you want to delete this beneficiary?",
+            callback: () => {
+              dispatch(deleteUser(selectedId));
+            },
+          },
+        })
+      );
     } else {
-      alert("Select the beneficiary to delete.");
+      dispatch(
+        updateCommonState({
+          modalConfig: {
+            display: true,
+            msg: "Select the beneficiary to delete.",
+          },
+        })
+      );
     }
   };
 

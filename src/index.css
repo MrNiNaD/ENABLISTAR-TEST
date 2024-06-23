@@ -266,6 +266,45 @@ select, select:disabled {
   opacity: 1;
 }
 
+.overlay {
+  background: #000000af;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+.modal {
+  width: 300px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.modal-btn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-msg {
+  font-size: 15px;
+  text-align: center;
+}
+
+.close-container {
+  line-height: 0;
+  background: transparent;
+  border: none;
+}
+
 @media only screen and (max-width: 800px) {
   .section-1, .right-section-part-2, .right-section-part-1 .left span.login-time {
     display: none;
@@ -291,5 +330,13 @@ select, select:disabled {
 
   .manage-title {
     font-size: 15px;
+  }
+
+  .right-section-part-1 .right ul {
+    font-size: 10px;
+  }
+
+  .modal {
+    width: 250px;
   }
 }
